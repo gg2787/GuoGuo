@@ -1,9 +1,9 @@
-package com.example.administrator.guoguo.prefs;
+package com.guoguo.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.administrator.guoguo.Utils.PrefUtil;
+import com.guoguo.Utils.PrefUtil;
 
 /**
  * Created by Administrator on 2015/9/17.

@@ -1,4 +1,4 @@
-package com.example.administrator.guoguo.shortcut;
+package com.guoguo.shortcut;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -11,10 +11,9 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Parcelable;
 
-import com.example.administrator.guoguo.MainActivity;
-import com.example.administrator.guoguo.R;
-import com.example.administrator.guoguo.Utils.PackageUtil;
-import com.example.administrator.guoguo.prefs.AppPrefs;
+import com.guoguo.ui.MainActivity;
+import com.guoguo.R;
+import com.guoguo.prefs.AppPrefs;
 
 import java.util.List;
 
@@ -144,7 +143,7 @@ public class AppShortCut {
 
     private String getUrlString(Context context) {
         String strUrl = "";
-        String strAuthority = getAuthority(context); ////获取用于组成uri的authority（主机名）
+        String strAuthority = getAuthority(context);
         String strPkgName = getLauncherPackageName(context);
 
         if (strAuthority == null || strAuthority.length() < 0) {
@@ -156,7 +155,6 @@ public class AppShortCut {
             }
         }
 
-        //组成用于访问内容提供者的url
         if (strAuthority != null && strAuthority.trim().length() > 0) {
             strUrl = "content://" + strAuthority + "/favorites?notify=true";
         } else {
@@ -172,7 +170,7 @@ public class AppShortCut {
     //获取用于组成uri的authority（主机名）
     private String getAuthority(Context context) {
         try {
-            String strPkgName = PackageUtil.getLauncherPackageName(context);
+            String strPkgName = getLauncherPackageName(context);
             //获取到手机上已安装的包的信息，这些信息是从它们的AndroidManifest.xml中获取到的
             //GET_PROVIDERS表示，获取xml中 <provider 标签内的内容
             List<PackageInfo> packs = context.getPackageManager().getInstalledPackages(PackageManager.GET_PROVIDERS);
@@ -200,5 +198,15 @@ public class AppShortCut {
         return null;
     }
 
+    private String getLauncherPackageName(Context context) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        ResolveInfo res = context.getPackageManager().resolveActivity(intent, 0);//从所有已安装的应用中，获取到与intent相符合的activity
+        if (res.activityInfo == null) {
+            return "";
+        }
+        return res.activityInfo.packageName;//获取到这个activity所在的packagename,这里获取的是launcher特有的activity
+    }
 }
+
 

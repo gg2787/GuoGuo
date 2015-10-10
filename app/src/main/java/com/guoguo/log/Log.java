@@ -1,9 +1,9 @@
-package com.example.administrator.guoguo.log;
+package com.guoguo.log;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.administrator.guoguo.Utils.PrefUtil;
+import com.guoguo.Utils.PrefUtil;
 
 import java.util.Calendar;
 
@@ -23,11 +23,8 @@ public class Log {
         String strTime = calCur.toString();
         PrefUtil.setString(servicePref, strTime + "_" + strTag + "_" + strLabel, strContent);
     }
-}
 
-
-
-//获取进程名的代码
+    //获取进程名的代码
        /* int pid = android.os.Process.myPid();
         String strProName = null;
         ActivityManager mActivityManager = (ActivityManager) mContext.getSystemService(Context.ACTIVITY_SERVICE);
@@ -41,3 +38,4 @@ public class Log {
         }
         String strLogPid = strLog + ",进程名：" + strProName + ",context:" + mContext.toString();
         Log.error(TAG, strLogPid);*/
+}

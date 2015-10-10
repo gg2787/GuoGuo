@@ -1,4 +1,4 @@
-package com.example.administrator.guoguo.json;
+package com.guoguo.json;
 
 /**
  * Created by Administrator on 2015/9/29.

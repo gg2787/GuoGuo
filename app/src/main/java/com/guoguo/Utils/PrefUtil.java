@@ -1,4 +1,4 @@
-package com.example.administrator.guoguo.Utils;
+package com.guoguo.Utils;
 
 import android.content.SharedPreferences;
 

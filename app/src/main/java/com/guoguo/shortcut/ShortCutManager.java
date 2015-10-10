@@ -1,4 +1,4 @@
-package com.example.administrator.guoguo.shortcut;
+package com.guoguo.shortcut;
 
 import java.util.Map;
 

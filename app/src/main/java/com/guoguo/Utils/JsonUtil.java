@@ -1,13 +1,13 @@
-package com.example.administrator.guoguo.Utils;
+package com.guoguo.Utils;
 
-import com.alibaba.fastjson.JSON;
+//import com.alibaba.fastjson.JSON;
 
 /**
  * Created by Administrator on 2015/9/29.
  */
 public class JsonUtil {
 
-    public static String toString(Object object) {
+    /*public static String toString(Object object) {
         try {
             return JSON.toJSONString(object);
         } catch (Exception e) {
@@ -25,5 +25,5 @@ public class JsonUtil {
         } catch (Error e) {
             return null;
         }
-    }
+    }*/
 }

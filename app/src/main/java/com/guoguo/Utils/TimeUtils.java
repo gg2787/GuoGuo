@@ -1,11 +1,11 @@
-package com.example.administrator.guoguo.Utils;
+package com.guoguo.Utils;
 
 import java.util.Calendar;
 
 /**
  * Created by Administrator on 2015/9/23.
  */
-public class TimeUtil {
+public class TimeUtils {
 
     public static void timeTest() {
 

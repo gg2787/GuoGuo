@@ -1,4 +1,4 @@
-package com.example.administrator.guoguo;
+package com.guoguo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

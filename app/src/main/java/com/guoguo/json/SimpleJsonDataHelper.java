@@ -1,13 +1,13 @@
-package com.example.administrator.guoguo.json;
+package com.guoguo.json;
 
-import com.example.administrator.guoguo.Utils.JsonUtil;
-import com.example.administrator.guoguo.log.Log;
+import com.guoguo.Utils.JsonUtil;
+import com.guoguo.log.Log;
 
 /**
  * Created by Administrator on 2015/9/29.
  */
 public class SimpleJsonDataHelper {
-    private static final String TAG = "SimpleJsonDataHelper";
+    /*private static final String TAG = "SimpleJsonDataHelper";
     public String makeJsonString(SimpleJsonDataBean bean) {
         return JsonUtil.toString(bean);
     }
@@ -34,5 +34,5 @@ public class SimpleJsonDataHelper {
         Log.error(TAG, "popcnt", Integer.toString(beanNew2.getMemClean().getOpen()));
 
         return;
-    }
+    }*/
 }
