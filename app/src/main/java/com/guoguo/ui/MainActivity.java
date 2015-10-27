@@ -1,5 +1,6 @@
 package com.guoguo.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.guoguo.R;
+import com.guoguo.app.GuoGuoApplication;
 import com.guoguo.prefs.AppPrefs;
 import com.guoguo.shortcut.AppShortCut;
+import com.guoguo.ui.toast.ShowToast;
+import com.guoguo.utils.AbTest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,21 +32,27 @@ public class MainActivity extends AppCompatActivity {
         appShortCut.addShortCut(this);
 
         initView();
+
     }
 
     private void initView() {
         findViewById(R.id.button_clickhere).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (AbTest.getAbTest()) {
+                    ShowToast.showShortToast(v.getContext(), v.getContext().getString(R.string.toast_short));
+                }
+                else {
+                    ShowToast.showLongToast(v.getContext(), v.getContext().getString(R.string.toast_long));
+                }
             }
         });
 
         findViewById(R.id.btn_another_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, SecondActivity.class));//显式启动
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://blog.sina.com.cn")));
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));//显式启动
+                //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://10.20.240.57/123/marketcloudcfg.json")));
             }
         });
     }

@@ -3,7 +3,7 @@ package com.guoguo.prefs;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.guoguo.Utils.PrefUtil;
+import com.guoguo.utils.PrefUtil;
 
 /**
  * Created by Administrator on 2015/9/17.

@@ -1,4 +1,6 @@
-package com.guoguo.Utils;
+package com.guoguo.utils;
+
+import android.content.Intent;
 
 import java.util.Calendar;
 
@@ -25,9 +27,6 @@ public class TimeUtils {
         int nHour2 = calNow2.get(Calendar.HOUR);
         int nMin2 = calNow2.get(Calendar.MINUTE);
         int nSec2 = calNow.get(Calendar.SECOND);
-
-
-
 
     }
 }

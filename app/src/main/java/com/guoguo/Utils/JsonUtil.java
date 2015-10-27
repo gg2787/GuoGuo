@@ -1,4 +1,4 @@
-package com.guoguo.Utils;
+package com.guoguo.utils;
 
 //import com.alibaba.fastjson.JSON;
 

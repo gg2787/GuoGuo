@@ -3,7 +3,7 @@ package com.guoguo.log;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.guoguo.Utils.PrefUtil;
+import com.guoguo.utils.PrefUtil;
 
 import java.util.Calendar;
 

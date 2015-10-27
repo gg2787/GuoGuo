@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GuoGuo</string>
+    <string name="app_name">G</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -8,4 +8,6 @@
     <string name="welcome">hi,welcome to GUOGUO</string>
     <string name="another_activity">打开一个新的activity</string>
     <string name="title_activity_second">secondActivity</string>
+    <string name="toast_short">toastShort</string>
+    <string name="toast_long">toastLong</string>
 </resources>
