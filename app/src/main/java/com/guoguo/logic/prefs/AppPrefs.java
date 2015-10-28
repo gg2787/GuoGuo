@@ -1,4 +1,4 @@
-package com.guoguo.prefs;
+package com.guoguo.logic.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,13 +1,12 @@
-package com.guoguo.shortcut;
+package com.guoguo.logic.shortcut;
 
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.widget.Toast;
+
 /**
  * [快捷方式实现类]<BR>
  * [1.页面需要继承 ShortCutImpl接口 2.界面调用showShortCutDialog方法即可]

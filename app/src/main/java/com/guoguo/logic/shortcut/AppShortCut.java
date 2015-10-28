@@ -1,4 +1,4 @@
-package com.guoguo.shortcut;
+package com.guoguo.logic.shortcut;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -13,7 +13,7 @@ import android.os.Parcelable;
 
 import com.guoguo.ui.MainActivity;
 import com.guoguo.R;
-import com.guoguo.prefs.AppPrefs;
+import com.guoguo.logic.prefs.AppPrefs;
 
 import java.util.List;
 

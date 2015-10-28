@@ -1,12 +1,10 @@
-package com.guoguo.scheduleTask;
+package com.guoguo.logic.scheduleTask;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
 
 /**
  * Created by Administrator on 2015/9/26.

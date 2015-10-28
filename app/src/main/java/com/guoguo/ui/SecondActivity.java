@@ -7,6 +7,8 @@ import android.view.MenuItem;
 
 import com.guoguo.R;
 
+import java.io.File;
+
 public class SecondActivity extends AppCompatActivity {
 
     @Override
