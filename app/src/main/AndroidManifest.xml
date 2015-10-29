@@ -53,6 +53,12 @@
                 <data android:scheme="http" />
             </intent-filter>
         </activity>
+
+
+        <!--对话框风格的activity-->
+        <!--<activity android:name=".ui.SecondActivity" android:theme="@android:style/Theme.Dialog" >-->
+        <!--</activity>-->
+
     </application>
 
 </manifest>
