@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Black">#000000</color>
+    <color name="White">#ffffffff</color>
+    <color name="Gray">#6c6c6c</color>
+    <color name="Orange">#e63900</color>
+    <color name="LightGray">#f3f3f3</color>
+
+    <color name="banner_tag_item_text_color">#f6fdff</color>
+    <color name="banner_tag_blue_item_color">#40aefb</color>
+    <color name="banner_tag_blue_item_on_color">#4fb5fc</color>
+    <color name="banner_tag_red_item_color">#f67463</color>
+    <color name="banner_tag_red_item_on_color">#fb8172</color>
+    <color name="banner_tag_green_item_color">#9ccd48</color>
+    <color name="banner_tag_green_item_on_color">#a5d454</color>
+    <color name="banner_tag_orange_item_color">#ffa54b</color>
+    <color name="banner_tag_orange_item_on_color">#ffb24d</color>
+</resources>

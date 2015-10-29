@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_hight"
+    android:orientation="horizontal"
+    android:background="@color/banner_tag_orange_item_on_color">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="@dimen/title_btn_width"
+        android:layout_height="@dimen/title_btn_hight"
+        android:src="@mipmap/back"
+        android:layout_marginLeft="10dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:layout_toRightOf="@id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:text="上一级"
+        android:textSize="20sp"
+        android:textColor="@color/White"/>
+
+</RelativeLayout>

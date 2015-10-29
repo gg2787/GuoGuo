@@ -1,7 +1,6 @@
 package com.guoguo.ui;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -13,8 +12,8 @@ import com.guoguo.R;
 import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.shortcut.AppShortCut;
-import com.guoguo.ui.notification.NotificationUtil;
 import com.guoguo.ui.toast.ShowToast;
+import com.guoguo.ui.view.SimpleListView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,10 +59,16 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_another_activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotificationUtil.sendSayHelloNormalNotification(v.getContext());
-                //startActivity(new Intent(MainActivity.this, SecondActivity.class));//显式启动
+               // NotificationUtil.sendSayHelloNormalNotification(v.getContext());
                // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
-                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel::10086")));
+               // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel::10086")));
+            }
+        });
+
+        findViewById(R.id.btn_simple_list_view).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SimpleListView.class));//显式启动
             }
         });
     }
