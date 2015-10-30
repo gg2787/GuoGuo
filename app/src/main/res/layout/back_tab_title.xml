@@ -5,23 +5,36 @@
     android:orientation="horizontal"
     android:background="@color/banner_tag_orange_item_on_color">
 
-    <ImageView
-        android:id="@+id/back"
-        android:layout_width="@dimen/title_btn_width"
-        android:layout_height="@dimen/title_btn_hight"
-        android:src="@mipmap/back"
-        android:layout_marginLeft="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/back"-->
+        <!--android:layout_width="@dimen/title_btn_width"-->
+        <!--android:layout_height="@dimen/title_btn_hight"-->
+        <!--android:src="@mipmap/back"-->
+        <!--android:layout_marginLeft="@dimen/title_margin"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:visibility="gone"/>-->
 
     <TextView
-        android:layout_toRightOf="@id/back"
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:text="上一级"
-        android:textSize="20sp"
+        android:drawableLeft="@mipmap/back"
+        android:layout_marginLeft="@dimen/title_margin"
+        android:text="返回"
+        android:textSize="@dimen/title_text_size"
+        android:textColor="@color/White"/>
+
+    <TextView
+        android:id="@+id/show_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/title_margin"
+        android:text="查看类名"
+        android:textSize="@dimen/title_text_size"
         android:textColor="@color/White"/>
 
 </RelativeLayout>

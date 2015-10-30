@@ -13,7 +13,7 @@ import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.ui.toast.ShowToast;
-import com.guoguo.ui.view.SimpleListView;
+import com.guoguo.ui.view.simpleView.SimpleListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_simple_list_view).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SimpleListView.class));//显式启动
+                startActivity(new Intent(MainActivity.this, SimpleListActivity.class));//显式启动
             }
         });
     }

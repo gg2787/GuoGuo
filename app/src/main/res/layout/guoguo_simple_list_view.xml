@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <com.guoguo.ui.title.BackTabTitle
+        android:id="@+id/back_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_hight">
     </com.guoguo.ui.title.BackTabTitle>

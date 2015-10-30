@@ -38,7 +38,7 @@
         </activity>
 
         <activity
-            android:name=".ui.view.SimpleListView"/>
+            android:name=".ui.view.simpleView.SimpleListActivity"/>
 
 
         <!--对话框风格的activity-->

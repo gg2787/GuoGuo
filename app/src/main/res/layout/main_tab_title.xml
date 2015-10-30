@@ -10,7 +10,7 @@
         android:layout_width="@dimen/title_icon_width"
         android:layout_height="@dimen/title_icon_hight"
         android:src="@mipmap/logo"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="@dimen/title_margin"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"/>
 
@@ -19,7 +19,7 @@
         android:layout_width="@dimen/title_btn_width"
         android:layout_height="@dimen/title_btn_hight"
         android:src="@mipmap/list"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="@dimen/title_margin"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"/>
 
