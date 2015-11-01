@@ -22,7 +22,7 @@ public class BackTabTitle extends RelativeLayout{
     public BackTabTitle(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.back_tab_title, this);
+        LayoutInflater.from(context).inflate(R.layout.tab_title_back, this);
         initView();
     }
 
