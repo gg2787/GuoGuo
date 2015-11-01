@@ -2,7 +2,9 @@ package com.guoguo.logic.phone;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 
+import com.guoguo.R;
 import com.guoguo.app.GuoGuoApplication;
 
 import java.util.ArrayList;
@@ -20,5 +22,24 @@ public class AppsManager {
             pkgNames.add(pkgInfo.packageName);
         }
         return pkgNames;
+    }
+
+    public static ArrayList<PackageInfo> getInstalledPkgInfos() {
+        PackageManager pkgMgr = GuoGuoApplication.mContext.getPackageManager();
+        List<PackageInfo> appInfoList = pkgMgr.getInstalledPackages(0);
+        ArrayList<PackageInfo> pkgInfos = new ArrayList<PackageInfo>();
+        pkgInfos.addAll(appInfoList);
+        return pkgInfos;
+    }
+
+    public static Drawable getAppIcon(String strPkgName) {
+        Drawable icon = null;
+        PackageManager pkgMgr = GuoGuoApplication.mContext.getPackageManager();
+        try {
+            icon = pkgMgr.getApplicationIcon(strPkgName);
+        } catch (PackageManager.NameNotFoundException e) {
+            icon = GuoGuoApplication.mContext.getDrawable(R.mipmap.logo);
+        }
+        return icon;
     }
 }

@@ -40,7 +40,8 @@
         <activity
             android:name=".ui.view.simpleView.SimpleListActivity"/>
 
-
+        <activity
+            android:name=".ui.view.customListView.CustomListActivity"/>
         <!--对话框风格的activity-->
         <!--<activity android:name=".ui.SecondActivity" android:theme="@android:style/Theme.Dialog" >-->
         <!--</activity>-->

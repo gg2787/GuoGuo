@@ -34,8 +34,7 @@ public class SimpleListActivity extends Activity{
 
     private void initData() {
         ArrayList<String> arrList = AppsManager.getInstalledPkgs();
-        mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrList);
-        //android.R.layout.simple_list_item_1 是安卓提供的listitem样式
+        mArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrList);//android.R.layout.simple_list_item_1 是安卓提供的listitem样式
     }
 
     private void initListView() {
