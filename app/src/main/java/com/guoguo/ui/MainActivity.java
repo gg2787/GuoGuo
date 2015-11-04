@@ -14,6 +14,7 @@ import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
+import com.guoguo.utils.DoTest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //finish();
+                DoTest.asyncTaskTest();
+                //DoTest.asyncTaskTestCustomPool();
             }
         });
 
