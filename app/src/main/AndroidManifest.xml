@@ -42,6 +42,9 @@
 
         <activity
             android:name=".ui.view.customListView.CustomListActivity"/>
+
+        <activity
+            android:name=".ui.view.fragmentViews.BaseFragmentActivity"/>
         <!--对话框风格的activity-->
         <!--<activity android:name=".ui.SecondActivity" android:theme="@android:style/Theme.Dialog" >-->
         <!--</activity>-->

@@ -14,7 +14,7 @@ import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
-import com.guoguo.utils.DoTest;
+import com.guoguo.ui.view.fragmentViews.BaseFragmentActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_clickhere).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //finish();
-                DoTest.asyncTaskTest();
-                //DoTest.asyncTaskTestCustomPool();
+                startActivity(new Intent(MainActivity.this, BaseFragmentActivity.class));
             }
         });
 

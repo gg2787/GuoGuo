@@ -13,4 +13,5 @@
     <string name="toast_long">toastLong</string>
     <string name="simple_list_view">simple list view</string>
     <string name="custom_list_view">custom list view</string>
+    <string name="hello_fragment">hello fragment</string>
 </resources>
