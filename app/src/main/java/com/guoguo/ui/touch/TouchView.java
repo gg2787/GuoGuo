@@ -37,6 +37,11 @@ public class TouchView extends View{
         return super.onTouchEvent(event);
     }
 
+    /**
+     * 使用scroller平滑移动
+     * @param destX
+     * @param destY
+     */
     private void smoothScrollTo(int destX, int destY) {
         int scrollX = getScrollX();
         int delta = destX - destY;
