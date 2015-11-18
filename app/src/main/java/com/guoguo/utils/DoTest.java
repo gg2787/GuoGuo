@@ -1,7 +1,15 @@
 package com.guoguo.utils;
 
+import android.app.ActivityManager;
+import android.content.Context;
+
+import com.guoguo.bean.TestBean;
 import com.guoguo.logic.log.Log;
 
+import org.w3c.dom.UserDataHandler;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -51,5 +59,12 @@ public class DoTest {
 //        Executors.newCachedThreadPool();
 //        exec.prestartCoreThread();
     }
+
+    public static void serializableTest() {
+//        TestBean testBean = new TestBean(1, "2", 3);
+//        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("catche.txt"));
+//
+    }
+
 
 }

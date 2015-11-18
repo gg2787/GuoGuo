@@ -17,9 +17,7 @@
     <permission
         android:name="com.guoguo.permission.MIPUSH_RECEIVE"
         android:protectionLevel="signature" />
-    <!--这里com.xiaomi.mipushdemo改成app的包名-->
     <uses-permission android:name="com.guoguo.permission.MIPUSH_RECEIVE" />
-    <!--这里com.xiaomi.mipushdemo改成app的包名-->
     <!--end of 小米推送-->
 
     <application
@@ -72,7 +70,7 @@
             </intent-filter>
         </receiver>
 
-        <!--小米推送-->
+        <!--小米推送 jar包中使用-->
         <service
             android:enabled="true"
             android:process=":pushservice"
@@ -100,12 +98,11 @@
                 <action android:name="com.xiaomi.push.PING_TIMER" />
             </intent-filter>
         </receiver>
-        <!--end of 小米推送-->
+        <!--end of 小米推送 jar包中使用-->
 
         <receiver
             android:exported="true"
             android:name="com.guoguo.pushClient.MyPushMessageReceiver">
-            <!--这里com.xiaomi.mipushdemo.DemoMessageRreceiver改成app中定义的完整类名-->
             <intent-filter>
                 <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
             </intent-filter>
