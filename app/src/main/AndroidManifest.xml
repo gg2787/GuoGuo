@@ -6,6 +6,7 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <!--小米推送-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -100,6 +101,7 @@
         </receiver>
         <!--end of 小米推送 jar包中使用-->
 
+        <!--小米推送 客户端使用-->
         <receiver
             android:exported="true"
             android:name="com.guoguo.pushClient.MyPushMessageReceiver">
@@ -113,6 +115,18 @@
                 <action android:name="com.xiaomi.mipush.ERROR" />
             </intent-filter>
         </receiver>
+        <!--end of 小米推送 客户端使用-->
+
+        <!--android:exported为false表示只可被当前Application或者拥有同样user ID的Application的组件调用-->
+        <service android:name="com.guoguo.logic.service.AppService"
+            android:exported="true">
+            <!--android:process=":appservice"-->
+            <intent-filter>
+                <action android:name="com.guoguo.logic_action_AppService"/>
+            </intent-filter>
+
+        </service>
+
     </application>
 
 </manifest>

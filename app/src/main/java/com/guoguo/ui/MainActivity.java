@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.guoguo.R;
 import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
+import com.guoguo.logic.service.AppService;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_clickhere).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, BaseFragmentActivity.class));
+                //startActivity(new Intent(MainActivity.this, BaseFragmentActivity.class));
+                AppService.StartService();
             }
         });
 
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                // NotificationUtil.sendSayHelloNormalNotification(v.getContext());
                // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
                // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel::10086")));
+                AppService.StartService();
             }
         });
 

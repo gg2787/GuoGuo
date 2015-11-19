@@ -43,7 +43,9 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
 
     @Override
     public void onReceivePassThroughMessage(Context context, MiPushMessage message) {
-        message.getContent();
+        Log.error(TAG, "receive message");
+        Log.error(TAG, "message Dsp:" + message.getDescription());
+        Log.error(TAG, "message Content:" + message.getContent());
     }
 
     @Override
@@ -58,6 +60,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
                 ShowToast.showShortToast(context, "getRegId" + mRegId);
                 MyPushService.getInstance(context).onGetRegId(mRegId);
                 Log.error(TAG, "register_success");
+                Log.error(TAG, "getRegId:" + mRegId);
             } else {
                 Log.error(TAG, "register_fail");
             }
@@ -73,6 +76,7 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
         List<String> arguments = message.getCommandArguments();
         String cmdArg1 = ((arguments != null && arguments.size() > 0) ? arguments.get(0) : null);
         String cmdArg2 = ((arguments != null && arguments.size() > 1) ? arguments.get(1) : null);
+        Log.error(TAG, "nCommandResult:" + message.getCommand());
     }
 
 }

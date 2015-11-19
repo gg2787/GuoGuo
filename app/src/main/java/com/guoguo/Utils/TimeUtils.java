@@ -2,12 +2,19 @@ package com.guoguo.utils;
 
 import android.content.Intent;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
  * Created by Administrator on 2015/9/23.
  */
 public class TimeUtils {
+
+    public static String formatCurTime() {
+        Calendar calNow = Calendar.getInstance();
+        SimpleDateFormat sFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sFormat.format(calNow.getTime());
+    }
 
     public static void timeTest() {
 

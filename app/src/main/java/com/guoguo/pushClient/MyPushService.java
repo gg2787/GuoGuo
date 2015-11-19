@@ -3,9 +3,14 @@ package com.guoguo.pushClient;
 import android.content.Context;
 
 import com.guoguo.app.GuoGuoApplication;
+import com.guoguo.logic.log.Log;
 import com.xiaomi.mipush.sdk.MiPushClient;
+import com.xiaomi.channel.commonutils.logger.LoggerInterface;
+import com.xiaomi.mipush.sdk.Logger;
+
 
 /**
+ * 小米推送服务客户端的主体
  * Created by Administrator on 2015/11/17.
  * http://dev.xiaomi.com/doc/?p=544#d5e54
  */
@@ -33,6 +38,8 @@ public class MyPushService {
 
     public void initPushService() {
         MiPushClient.checkManifest(mContext);
+
+        Log.error(TAG, "initPushService");
         if (shouldInit(mContext)) {
             MiPushClient.registerPush(mContext, APP_ID, APP_KEY);
         }
@@ -44,7 +51,8 @@ public class MyPushService {
             MiPushClient.unregisterPush(mContext);
         }
     }
-    /**
+
+     /**
      * 因为推送服务XMPushService在AndroidManifest.xml中设置为运行在另外一个进程，这导致本Application会被实例化两次，所以我们需要让应用的主进程初始化。
      * @param context
      * @return
@@ -57,7 +65,6 @@ public class MyPushService {
         setRegId(strRegId);
         bindAlias();
     }
-
 
     private void setRegId(String strRegId) {
         mStrRegId = strRegId;
