@@ -13,6 +13,8 @@ import com.xiaomi.mipush.sdk.Logger;
  * 小米推送服务客户端的主体
  * Created by Administrator on 2015/11/17.
  * http://dev.xiaomi.com/doc/?p=544#d5e54
+ *     public static final String APP_ID = "2882303761517412146";
+ public static final String APP_KEY = "5401741223146";
  */
 public class MyPushService {
 
