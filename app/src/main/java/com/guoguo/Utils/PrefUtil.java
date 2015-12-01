@@ -24,4 +24,11 @@ public class PrefUtil {
             servicePref.edit().putString(strKey, strValue).commit();
         }
     }
+
+    public static String getString(SharedPreferences servicePref, String strKey) {
+        if (null != servicePref) {
+            return servicePref.getString(strKey, "");
+        }
+        return "";
+    }
 }
