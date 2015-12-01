@@ -1,7 +1,10 @@
 package com.guoguo.ui;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,15 +15,16 @@ import com.guoguo.R;
 import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.service.AppService;
+import com.guoguo.logic.service.MyBinder;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
-import com.guoguo.ui.view.fragmentViews.BaseFragmentActivity;
 
 public class MainActivity extends AppCompatActivity {
 
     AppShortCut appShortCut = new AppShortCut();
     private Button btnClickHere = null;
+    private MyBinder mBinder = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(MainActivity.this, BaseFragmentActivity.class));
-                AppService.StartService();
+                AppService.startService();
+                AppService.bindMyService(mSrvConn);
             }
         });
 
@@ -65,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
                // NotificationUtil.sendSayHelloNormalNotification(v.getContext());
                // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
                // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel::10086")));
-                AppService.StartService();
+                //AppService.startService();
+                AppService.unbindMyService(mSrvConn);
             }
         });
 
@@ -113,5 +119,17 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private ServiceConnection mSrvConn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            mBinder = (MyBinder)service;
+            mBinder.doSomething();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+        }
+    };
 }
 
