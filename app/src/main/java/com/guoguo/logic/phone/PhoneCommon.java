@@ -33,8 +33,7 @@ public class PhoneCommon {
         final TelephonyManager tm = (TelephonyManager)context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         String phoneIMEI = tm.getDeviceId();
-        if(phoneIMEI == null)
-        {
+        if(phoneIMEI == null) {
             phoneIMEI = "";
         }
         return phoneIMEI;

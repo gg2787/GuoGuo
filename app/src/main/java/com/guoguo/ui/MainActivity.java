@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.guoguo.R;
+import com.guoguo.demos.dynamicProxy.ProxyTest;
 import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.service.AppService;
@@ -59,8 +60,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //startActivity(new Intent(MainActivity.this, BaseFragmentActivity.class));
-                AppService.startService();
-                AppService.bindMyService(mSrvConn);
+//                AppService.startService();
+//                AppService.bindMyService(mSrvConn);
+
+                ProxyTest.doProxyTest();
             }
         });
 
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
                // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel::10086")));
                 //AppService.startService();
-                AppService.unbindMyService(mSrvConn);
+//                AppService.unbindMyService(mSrvConn);
             }
         });
 
