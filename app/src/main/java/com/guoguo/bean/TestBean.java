@@ -1,5 +1,4 @@
 package com.guoguo.bean;
-
 /**
  * Created by Administrator on 2015/11/18.
  */
@@ -12,5 +11,6 @@ public class TestBean {
         nA = a;
         nB = b;
         nC = c;
+
     }
 }

@@ -18,6 +18,7 @@ import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.service.AppService;
 import com.guoguo.logic.service.MyBinder;
 import com.guoguo.logic.shortcut.AppShortCut;
+import com.guoguo.logic.watchUs.OpenWeiChat;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
 
@@ -63,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
 //                AppService.startService();
 //                AppService.bindMyService(mSrvConn);
 
-                ProxyTest.doProxyTest();
+//                ProxyTest.doProxyTest();
+
+                OpenWeiChat.OpenWeiChatApp(MainActivity.this);
             }
         });
 

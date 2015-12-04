@@ -20,6 +20,7 @@ public class DynamicProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
         Object result = null;
         Log.error(TAG, "do things before");
         result = method.invoke(target, args);
