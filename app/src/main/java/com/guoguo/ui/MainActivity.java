@@ -12,10 +12,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.guoguo.R;
-import com.guoguo.demos.dynamicProxy.ProxyTest;
 import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
-import com.guoguo.logic.service.AppService;
 import com.guoguo.logic.service.MyBinder;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.logic.watchUs.OpenWeiChat;
@@ -65,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 //                AppService.bindMyService(mSrvConn);
 
 //                ProxyTest.doProxyTest();
-
-                OpenWeiChat.OpenWeiChatApp(MainActivity.this);
+                OpenWeiChat.copy2Clipboard("GUOGUOweixinTest", MainActivity.this);
+                OpenWeiChat.openWeiChatApp(MainActivity.this);
             }
         });
 
