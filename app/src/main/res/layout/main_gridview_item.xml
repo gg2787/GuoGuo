@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_hight"
+    android:orientation="horizontal">
+
+    <!--<ImageView-->
+        <!--android:id="@+id/list_image"-->
+        <!--android:src = "@mipmap/logo"-->
+        <!--android:layout_width="@dimen/list_item_icon_width"-->
+        <!--android:layout_height="@dimen/list_item_icon_hight"-->
+        <!--android:layout_marginLeft="@dimen/list_margin"/>-->
+    <!--android:layout_marginLeft="@dimen/list_margin"-->
+    <TextView
+        android:id="@+id/grid_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/custom_list_view"
+        android:gravity="center"
+        android:background="@color/White"/>
+
+</LinearLayout>

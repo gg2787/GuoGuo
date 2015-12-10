@@ -1,30 +1,49 @@
 package com.guoguo.ui;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 
 import com.guoguo.R;
+import com.guoguo.demos.dynamicProxy.ProxyTest;
 import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
+import com.guoguo.logic.service.AppService;
 import com.guoguo.logic.service.MyBinder;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.logic.watchUs.OpenWeiChat;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class MainActivity extends Activity {
 
     AppShortCut appShortCut = new AppShortCut();
     private Button btnClickHere = null;
     private MyBinder mBinder = null;
+    private GridView mGridView = null;
+
+    private static final int GRID_ITEM_START_SERVICE = 0;
+    private static final int GRID_ITEM_STOP_SERVICE = 1;
+    private static final int GRID_ITEM_MY_LIST = 2;
+    private static final int GRID_ITEM_OPEN_WEICHAT = 3;
+    private static final int GRID_ITEM_PROXY_TEST = 4;
+    private static final int GRID_ITEM_VIEW_PAGER = 5;
+    private static final int GRID_ITEM_BANNER = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,36 +74,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        findViewById(R.id.button_clickhere).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this, BaseFragmentActivity.class));
-//                AppService.startService();
-//                AppService.bindMyService(mSrvConn);
+//        findViewById(R.id.button_clickhere).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            }
+//        });
 
-//                ProxyTest.doProxyTest();
-                OpenWeiChat.copy2Clipboard("GUOGUOweixinTest", MainActivity.this);
-                OpenWeiChat.openWeiChatApp(MainActivity.this);
-            }
-        });
-
-        findViewById(R.id.btn_another_activity).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               // NotificationUtil.sendSayHelloNormalNotification(v.getContext());
-               // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com")));
-               // startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel::10086")));
-                //AppService.startService();
-//                AppService.unbindMyService(mSrvConn);
-            }
-        });
-
-        findViewById(R.id.btn_simple_list_view).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, CustomListActivity.class));//显式启动
-            }
-        });
+        initGridView();
     }
 
     /**
@@ -131,8 +127,78 @@ public class MainActivity extends AppCompatActivity {
             mBinder.doSomething();
         }
 
+
         @Override
         public void onServiceDisconnected(ComponentName name) {
+        }
+    };
+
+    private void initGridView() {
+        mGridView = (GridView)findViewById(R.id.main_grid_view);
+        mGridView.setSelector(new ColorDrawable(Color.TRANSPARENT));//选中时高亮
+
+        ArrayList<HashMap<String, Object>> lstItem = new ArrayList<HashMap<String, Object>>();
+
+        HashMap<String, Object> mapService = new HashMap<>();
+        mapService.put("ItemText", "启动服务");
+        lstItem.add(mapService);
+
+        HashMap<String, Object> mapStopService = new HashMap<>();
+        mapStopService.put("ItemText", "停止服务");
+        lstItem.add(mapStopService);
+
+        HashMap<String, Object> mapList = new HashMap<>();
+        mapList.put("ItemText", "自定义list界面");
+        lstItem.add(mapList);
+
+        HashMap<String, Object> mapOpenWeiChat = new HashMap<>();
+        mapOpenWeiChat.put("ItemText", "打开微信");
+        lstItem.add(mapOpenWeiChat);
+
+        HashMap<String, Object> mapTestProxy = new HashMap<>();
+        mapTestProxy.put("ItemText", "动态代理测试");
+        lstItem.add(mapTestProxy);
+
+        HashMap<String, Object> mapViewPager = new HashMap<>();
+        mapViewPager.put("ItemText", "ViewPager");
+        lstItem.add(mapViewPager);
+
+        MainGrideAdapter manageGrideAdapter = new MainGrideAdapter(lstItem, this);
+        mGridView.setAdapter(manageGrideAdapter);
+        mGridView.setOnItemClickListener(mGridViewItemClick);
+    }
+
+    //GridView 是 AdapterView的子类
+    private AdapterView.OnItemClickListener mGridViewItemClick = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            switch (position) {
+                case GRID_ITEM_START_SERVICE:
+                    AppService.startService();
+//                AppService.bindMyService(mSrvConn);
+                    break;
+                case GRID_ITEM_STOP_SERVICE:
+                    AppService.stopService();
+//                AppService.unbindMyService(mSrvConn);
+                    break;
+                case GRID_ITEM_MY_LIST:
+                    startActivity(new Intent(MainActivity.this, CustomListActivity.class));//显式启动
+                    break;
+                case GRID_ITEM_OPEN_WEICHAT:
+                    OpenWeiChat.openWeiChatApp(MainActivity.this);
+                    break;
+                case GRID_ITEM_PROXY_TEST:
+                    ProxyTest.doProxyTest();
+                    break;
+                case GRID_ITEM_VIEW_PAGER:
+                    //viewpager
+                    break;
+                case GRID_ITEM_BANNER:
+                    //使用fragment
+                    break;
+                default:
+                    break;
+            }
         }
     };
 }
