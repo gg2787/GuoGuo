@@ -38,6 +38,5 @@
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"     >
 
-
     </GridView>
 </LinearLayout>

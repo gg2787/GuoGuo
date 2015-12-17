@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +25,7 @@ import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.logic.watchUs.OpenWeiChat;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
+import com.guoguo.ui.viewpager.MyViewPager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.guoguo_main_activity);
+        setContentView(R.layout.main_activity);
 
         AppPrefs.init(this);
 
@@ -191,6 +191,7 @@ public class MainActivity extends Activity {
                     ProxyTest.doProxyTest();
                     break;
                 case GRID_ITEM_VIEW_PAGER:
+                    startActivity(new Intent(MainActivity.this, MyViewPager.class));
                     //viewpager
                     break;
                 case GRID_ITEM_BANNER:

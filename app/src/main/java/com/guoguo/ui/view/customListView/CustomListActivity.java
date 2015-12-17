@@ -23,7 +23,7 @@ public class CustomListActivity extends Activity{
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.guoguo_simple_list_view);
+        setContentView(R.layout.simple_list_view);
     }
 
     @Override
