@@ -1,4 +1,4 @@
-package com.guoguo.Utils;
+package com.guoguo.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
