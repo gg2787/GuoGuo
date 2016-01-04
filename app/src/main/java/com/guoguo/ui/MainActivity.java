@@ -23,6 +23,7 @@ import com.guoguo.logic.service.AppService;
 import com.guoguo.logic.service.MyBinder;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.logic.watchUs.OpenWeiChat;
+import com.guoguo.ui.anmi.TweenedAnimation;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
 import com.guoguo.ui.viewpager.MyViewPager;
@@ -43,7 +44,8 @@ public class MainActivity extends Activity {
     private static final int GRID_ITEM_OPEN_WEICHAT = 3;
     private static final int GRID_ITEM_PROXY_TEST = 4;
     private static final int GRID_ITEM_VIEW_PAGER = 5;
-    private static final int GRID_ITEM_BANNER = 6;
+    private static final int GRID_ITEM_ANIM = 6;
+    private static final int GRID_ITEM_BANNER = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +165,10 @@ public class MainActivity extends Activity {
         mapViewPager.put("ItemText", "ViewPager");
         lstItem.add(mapViewPager);
 
+        HashMap<String, Object> mapAnim = new HashMap<>();
+        mapAnim.put("ItemText", "tweened动画");
+        lstItem.add(mapAnim);
+
         MainGrideAdapter manageGrideAdapter = new MainGrideAdapter(lstItem, this);
         mGridView.setAdapter(manageGrideAdapter);
         mGridView.setOnItemClickListener(mGridViewItemClick);
@@ -196,6 +202,9 @@ public class MainActivity extends Activity {
                     break;
                 case GRID_ITEM_BANNER:
                     //使用fragment
+                    break;
+                case GRID_ITEM_ANIM:
+                    startActivity(new Intent(MainActivity.this, TweenedAnimation.class));
                     break;
                 default:
                     break;
