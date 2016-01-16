@@ -6,21 +6,12 @@
 
     <include layout="@layout/tab_title_main"></include>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/main_banner_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/click_here"
-        android:id="@+id/button_clickhere"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/another_activity"
-        android:id="@+id/btn_another_activity"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
+        android:orientation="horizontal">
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"

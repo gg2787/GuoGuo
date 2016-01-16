@@ -1,5 +1,6 @@
 package com.guoguo.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -11,9 +12,12 @@ import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.guoguo.R;
 import com.guoguo.demos.dynamicProxy.ProxyTest;
@@ -27,9 +31,11 @@ import com.guoguo.ui.anmi.TweenedAnimation;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
 import com.guoguo.ui.viewpager.MyViewPager;
+import com.guoguo.utils.UIutils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.zip.Inflater;
 
 public class MainActivity extends Activity {
 
@@ -46,6 +52,11 @@ public class MainActivity extends Activity {
     private static final int GRID_ITEM_VIEW_PAGER = 5;
     private static final int GRID_ITEM_ANIM = 6;
     private static final int GRID_ITEM_BANNER = 7;
+
+    private static final int BANNER_MARGIN_DP = 10;
+    private static final int BANNER_HEIGHT_DP = 160;
+
+    LinearLayout mBannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +93,7 @@ public class MainActivity extends Activity {
 //            }
 //        });
 
+        initBannerView();
         initGridView();
     }
 
@@ -211,5 +223,37 @@ public class MainActivity extends Activity {
             }
         }
     };
+
+    private void initBannerView() {
+        mBannerView = (LinearLayout)findViewById(R.id.main_banner_view);
+
+        int nMargin = UIutils.dip2px(this, BANNER_MARGIN_DP);
+        int nSeparate = UIutils.dip2px(this, BANNER_MARGIN_DP);
+        int nScreenSize[] = UIutils.getScreenSize((Activity) this);
+        int nWidth = (nScreenSize[0] - nMargin * 3) / 2;
+        int nHeight = BANNER_HEIGHT_DP - nMargin * 2;
+
+        ImageView imgView1 = initImagView(nMargin, nMargin, nSeparate/2, 0, nWidth, nHeight);
+        ImageView imgView2 = initImagView(nSeparate/2, nMargin, nMargin, 0, nWidth, nHeight);
+        ImageView imgView3 = initImagView(nMargin, nMargin, nSeparate/2, nMargin, nWidth, nHeight);
+        ImageView imgView4 = initImagView(nSeparate/2, nMargin, nMargin, nMargin, nWidth, nHeight);
+
+        mBannerView.addView(imgView1);
+        mBannerView.addView(imgView2);
+        mBannerView.addView(imgView3);
+        mBannerView.addView(imgView4);
+
+    }
+
+    private ImageView initImagView(int nLeftMargin, int nTopMargin, int nRightMargin, int nBottomMargin, int nWidth, int nHeight) {
+        ImageView img = new ImageView(this);
+        LinearLayout.LayoutParams para;
+        para = new LinearLayout.LayoutParams(0, 0);
+        para.width = nWidth;
+        para.height = nHeight;
+        para.setMargins(nLeftMargin, nTopMargin, nRightMargin, nBottomMargin);
+        img.setLayoutParams(para);
+        return img;
+    }
 }
 
