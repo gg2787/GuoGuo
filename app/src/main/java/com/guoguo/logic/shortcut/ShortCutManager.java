@@ -10,8 +10,6 @@ import android.content.pm.ResolveInfo;
 /**
  * [快捷方式实现类]<BR>
  * [1.页面需要继承 ShortCutImpl接口 2.界面调用showShortCutDialog方法即可]
- * 
- * @author Owen Xie
  */
 public class ShortCutManager {
 	private static final String ANDROID_LAUNCHER_PACKAGE = "com.google.android.googlequicksearchbox";
@@ -634,7 +632,7 @@ public class ShortCutManager {
 		datamap.put("dtsearch", isHas ? "1" : "2");
 		isHas = ShortcutDetector.Builder.newInstance(context, launcherPackage).hasShortcut(context, launcherPackage,
 				context.getString(R.string.app_name), "");
-		datamap.put("dtsjzs", isHas ? "1" : "2");
+		datamap.put("dt", isHas ? "1" : "2");
         datamap.put("dtgamebox", "2");*/
 	}
 
