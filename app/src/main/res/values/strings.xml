@@ -14,4 +14,5 @@
     <string name="simple_list_view">simple list view</string>
     <string name="custom_list_view">custom list view</string>
     <string name="hello_fragment">hello fragment</string>
+    <string name="accessibility_service_label">GuoGuo辅助功能</string>
 </resources>

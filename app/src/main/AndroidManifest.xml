@@ -21,6 +21,10 @@
     <uses-permission android:name="com.guoguo.permission.MIPUSH_RECEIVE" />
     <!--end of 小米推送-->
 
+    <!--辅助功能-->
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+    <!--end of 辅助功能-->
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -130,6 +134,15 @@
             </intent-filter>
 
         </service>
+
+        <!--辅助功能-->
+        <service android:name="com.guoguo.logic.accessibility.MyAccessibilityService"
+            android:label="@string/accessibility_service_label">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+        </service>
+        <!--辅助功能-->
 
     </application>
 

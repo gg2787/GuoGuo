@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.guoguo.ui.toast.ShowToast;
 public class BackTabTitle extends RelativeLayout{
     private Context mContext = null;
     private String mstrClassName = null;
+    private GestureDetector mGestureDetector;
 
     public BackTabTitle(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -44,9 +47,54 @@ public class BackTabTitle extends RelativeLayout{
                 }
             }
         });
+
+        mGestureDetector = new GestureDetector(mContext, new GestureListener());
     }
 
     public void SetTabClassName(String strClassName) {
         mstrClassName = strClassName;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return mGestureDetector.onTouchEvent(event);
+    }
+
+    private class GestureListener implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener{
+        public boolean onDown(MotionEvent e) {
+            return true;
+        }
+
+        public void onShowPress(MotionEvent e) {
+        }
+
+        public boolean onSingleTapUp(MotionEvent e) {
+            return true;
+        }
+
+        public boolean onScroll(MotionEvent e1, MotionEvent e2,
+                                float distanceX, float distanceY) {
+            return true;
+        }
+
+        public void onLongPress(MotionEvent e) {
+        }
+
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
+                               float velocityY) {
+            return true;
+        }
+
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            return true;
+        }
+
+        public boolean onDoubleTap(MotionEvent e) {
+            return true;
+        }
+
+        public boolean onDoubleTapEvent(MotionEvent e) {
+            return true;
+        }
     }
 }
