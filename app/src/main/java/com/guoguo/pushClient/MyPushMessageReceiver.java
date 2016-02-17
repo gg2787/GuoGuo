@@ -33,8 +33,7 @@ import java.util.List;
  * 6、DemoMessageReceiver的onCommandResult方法用来接收客户端向服务器发送命令后的响应结果
  * 7、DemoMessageReceiver的onReceiveRegisterResult方法用来接收客户端向服务器发送注册命令后的响应结果
  * 8、以上这些方法运行在非UI线程中
- *
- * @author mayixiang
+
  */
 
 /**

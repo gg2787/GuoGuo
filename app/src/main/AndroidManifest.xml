@@ -135,14 +135,14 @@
 
         </service>
 
-        <!--辅助功能-->
-        <service android:name="com.guoguo.logic.accessibility.MyAccessibilityService"
-            android:label="@string/accessibility_service_label">
-            <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
-            </intent-filter>
-        </service>
-        <!--辅助功能-->
+        <!--&lt;!&ndash;辅助功能&ndash;&gt;-->
+        <!--<service android:name="com.guoguo.logic.accessibility.MyAccessibilityService"-->
+            <!--android:label="@string/accessibility_service_label">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.accessibilityservice.AccessibilityService" />-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+        <!--&lt;!&ndash;辅助功能&ndash;&gt;-->
 
     </application>
 
