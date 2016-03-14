@@ -25,9 +25,10 @@ import com.guoguo.logic.service.AppService;
 import com.guoguo.logic.service.MyBinder;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.logic.watchUs.OpenWeiChat;
-import com.guoguo.ui.anmi.TweenedAnimation;
+import com.guoguo.ui.anmi.SimpleAnimation;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
+import com.guoguo.ui.view.customProgressView.ProgressActivity;
 import com.guoguo.ui.viewpager.MyViewPager;
 import com.guoguo.utils.UIutils;
 
@@ -48,7 +49,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private static final int GRID_ITEM_PROXY_TEST = 4;
     private static final int GRID_ITEM_VIEW_PAGER = 5;
     private static final int GRID_ITEM_ANIM = 6;
-    private static final int GRID_ITEM_BANNER = 7;
+    private static final int GRID_ITEM_POP_UP_WINDOW = 8;
+    private static final int GRID_ITEM_MY_PROGRESS = 7;
+    private static final int GRID_ITEM_BANNER = 9;
 
     private static final int BANNER_MARGIN_DP = 5;
     private static final int BANNER_HEIGHT_DP = 160;
@@ -179,6 +182,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
         mapAnim.put("ItemText", "tweened动画");
         lstItem.add(mapAnim);
 
+        HashMap<String, Object> mapProgress = new HashMap<>();
+        mapProgress.put("ItemText", "自定义进度条");
+        lstItem.add(mapProgress);
+
         MainGrideAdapter manageGrideAdapter = new MainGrideAdapter(lstItem, this);
         mGridView.setAdapter(manageGrideAdapter);
         mGridView.setOnItemClickListener(mGridViewItemClick);
@@ -214,7 +221,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     //使用fragment
                     break;
                 case GRID_ITEM_ANIM:
-                    startActivity(new Intent(MainActivity.this, TweenedAnimation.class));
+                    startActivity(new Intent(MainActivity.this, SimpleAnimation.class));
+                    break;
+//                case GRID_ITEM_POP_UP_WINDOW:
+//                    PopUpWindowManager.showWindow(PopUpWindowManager.POP_UP_WINDOW_WELCOME);
+//                    break;
+                case GRID_ITEM_MY_PROGRESS:
+                    startActivity(new Intent(MainActivity.this, ProgressActivity.class));
                     break;
                 default:
                     break;
@@ -222,6 +235,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         }
     };
 
+    /**
+     * 动态创建首页上方的四个banner，有点击态
+     */
     private void initBannerView() {
         mBannerView = (LinearLayout)findViewById(R.id.main_banner_view);
         mBannerView.setOrientation(LinearLayout.HORIZONTAL);

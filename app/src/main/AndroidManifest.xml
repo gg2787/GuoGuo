@@ -66,7 +66,10 @@
             android:name=".ui.view.fragmentViews.BaseFragmentActivity"/>
 
         <activity
-            android:name=".ui.anmi.TweenedAnimation"/>
+            android:name=".ui.anmi.SimpleAnimation"/>
+
+        <activity
+            android:name=".ui.view.customProgressView.ProgressActivity"/>
 
         <!--对话框风格的activity-->
         <!--<activity android:name=".ui.SecondActivity" android:theme="@android:style/Theme.Dialog" >-->

@@ -52,6 +52,8 @@
            止x轴坐标
            始y轴坐标
            止y轴坐标
+           100%表示相对于自己
+           100%p表示相对于父控件
       -->
     <translate
         android:fromXDelta="0%"
