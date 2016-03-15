@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/custom_view"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_gravity="center_horizontal"
-    android:orientation="vertical"
-    android:background="@color/White">
+    android:orientation="horizontal"
+    android:background="@color/banner_tag_blue_item_color">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/custom_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_gravity="center_horizontal"
-        android:text = "动画文案2"/>
+        android:background="@color/banner_tag_green_item_color">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_gravity="center_horizontal"
-        android:text = "动画文案3"/>
+        <TextView
+            android:id="@+id/custom_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textSize="30dp"
+            android:text = "动画文案1"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/custom_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textSize="30dp"
+            android:text = "动画文案2"
+            android:layout_below="@id/custom_text1"/>
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

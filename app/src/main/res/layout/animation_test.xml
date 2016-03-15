@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:background="@color/LightGray">
 
-
     <ImageView
         android:id="@+id/image_png"
         android:layout_width="match_parent"
@@ -15,8 +14,10 @@
         android:background="@color/White"/>
 
     <com.guoguo.ui.anmi.AnimCustomView
+        android:id="@+id/animCustomView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+    </com.guoguo.ui.anmi.AnimCustomView>
 
 
     <ImageView

@@ -28,12 +28,13 @@ import java.nio.charset.MalformedInputException;
  * Created by Administrator on 2016/1/4.
  * 补间动画：Animation 用于实现基本的动画效果：控件的透明度、旋转、缩放、位移
  * 属性动画：Animator, 可以设置AnimatorListenerAdapter
+ * 本类实现了补间动画和属性动画。
  */
-public class SimpleAnimation extends Activity{
+public class SimpleAnimationActivity extends Activity{
     private ImageView mImageView = null;
     private int mnHeight = 0;
-    private LinearLayout mCustomView = null;
-
+    private AnimCustomView mCustomView = null;
+    private ImageView mImageView2 = null;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -51,12 +52,16 @@ public class SimpleAnimation extends Activity{
     protected void onResume() {
         super.onResume();
 //        startAnimationAnim1();
-        startObjectAnimator();
+//        startObjectAnimator();
+//        mCustomView.resetLayout(mCustomView);
+//        startRotationX();
     }
 
     private void initView() {
         mImageView = (ImageView)findViewById(R.id.image_png);
-        mCustomView =(LinearLayout)findViewById(R.id.custom_view);
+        mImageView2 = (ImageView)findViewById(R.id.image_png_2);
+        mCustomView =(AnimCustomView)findViewById(R.id.animCustomView);
+        mCustomView.setVisibility(View.VISIBLE);
         mnHeight = UIutils.dip2px(this, 100);
     }
 
@@ -116,6 +121,7 @@ public class SimpleAnimation extends Activity{
 
     /*
     代码定义属性动画,缩小
+    同时控件大小缩小，会造成不匹配
      */
     private void startObjectAnimator() {
 //        ObjectAnimator animator1 = ObjectAnimator.ofFloat(mImageView, "translationX", 0f, 200f);
@@ -133,15 +139,13 @@ public class SimpleAnimation extends Activity{
         animator3.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                float nValue = (float)animation.getAnimatedValue("scaleY");
+                float nValue = (float) animation.getAnimatedValue("scaleY");
                 if (nValue <= 0.0 || nValue >= 1.0) {
                     return;
                 }
-                int nCurHeight = (int)(mnHeight * (nValue));
+                int nCurHeight = (int) (mnHeight * (nValue));
                 LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, nCurHeight);
                 mCustomView.setLayoutParams(param);
-
-//                mCustomView.set
                 return;
             }
         });
@@ -150,6 +154,32 @@ public class SimpleAnimation extends Activity{
 //        set.play(animator1).with(animator2);
 //        set.play(animator3).after(animator2);
         set.play(animator3);
-        set.setDuration(30000).start();
+        set.setDuration(3000).start();
+    }
+
+    /*
+    属性动画，绕X轴旋转
+     */
+    private void startRotationX() {
+        float fFromDegrees = 0.0F;
+        float fToDegrees = 360.0F;
+
+        ObjectAnimator objectAnimator1 =  ObjectAnimator.ofFloat(mCustomView, "rotationX", fFromDegrees, fToDegrees);
+        ObjectAnimator objectAnimator2 =  ObjectAnimator.ofFloat(mImageView, "rotationY", fFromDegrees, fToDegrees);
+//        ObjectAnimator objectAnimator3 =  ObjectAnimator.ofFloat(mImageView2, "rotationZ", fFromDegrees, fToDegrees);
+        ObjectAnimator objectAnimator3 =  ObjectAnimator.ofFloat(mImageView2, "rotation", fFromDegrees, fToDegrees);
+        AnimatorSet set = new AnimatorSet();
+        set.play(objectAnimator1).with(objectAnimator2).with(objectAnimator3);
+
+        set.setDuration(3000);
+
+        set.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+            }
+        });
+
+        set.start();
     }
 }

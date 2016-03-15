@@ -25,7 +25,7 @@ import com.guoguo.logic.service.AppService;
 import com.guoguo.logic.service.MyBinder;
 import com.guoguo.logic.shortcut.AppShortCut;
 import com.guoguo.logic.watchUs.OpenWeiChat;
-import com.guoguo.ui.anmi.SimpleAnimation;
+import com.guoguo.ui.anmi.SimpleAnimationActivity;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
 import com.guoguo.ui.view.customProgressView.ProgressActivity;
@@ -221,7 +221,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     //使用fragment
                     break;
                 case GRID_ITEM_ANIM:
-                    startActivity(new Intent(MainActivity.this, SimpleAnimation.class));
+                    startActivity(new Intent(MainActivity.this, SimpleAnimationActivity.class));
                     break;
 //                case GRID_ITEM_POP_UP_WINDOW:
 //                    PopUpWindowManager.showWindow(PopUpWindowManager.POP_UP_WINDOW_WELCOME);
