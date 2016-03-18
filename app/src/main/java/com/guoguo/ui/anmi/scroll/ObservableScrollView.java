@@ -1,4 +1,4 @@
-package com.guoguo.ui.anmi;
+package com.guoguo.ui.anmi.scroll;
 
 import android.content.Context;
 import android.util.AttributeSet;

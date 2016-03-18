@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="text_color" format="color" />
+    <attr name="img_bkg" format="reference" />
+    <attr name="anim" format="boolean" />
+
     <declare-styleable name="CustomProgress">
         <attr name="stroke_color" format="color" />
         <attr name="solid_color" format="color" />
@@ -10,5 +14,11 @@
         <attr name="strokecolor" format="color" />
         <attr name="strokewidth" format="integer"/>
         <attr name="circlecolor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MyView">
+        <attr name="text_color" />
+        <attr name="img_bkg" />
+        <attr name="anim" />
     </declare-styleable>
 </resources>

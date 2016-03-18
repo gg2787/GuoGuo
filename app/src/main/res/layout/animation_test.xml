@@ -5,10 +5,49 @@
     android:orientation="vertical"
     android:background="@color/LightGray">
 
-    <com.guoguo.ui.anmi.ObservableScrollView
-        android:id="@+id/sv_scroll"
+    <com.guoguo.ui.anmi.AnimCircle
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/pull_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/image_png"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/image"
+                android:background="@color/White"/>
+
+            <com.guoguo.ui.anmi.AnimCustomView
+                android:id="@+id/animCustomView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.guoguo.ui.anmi.AnimCustomView>
+
+
+            <ImageView
+                android:id="@+id/image_png_2"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/image"
+                android:background="@color/White"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/image"
+                android:background="@color/White"/>
+
+        </LinearLayout>
 
     <!--<com.guoguo.ui.anmi.AnimCircle-->
         <!--xmlns:guoguo="http://schemas.android.com/apk/res-auto"-->
@@ -20,29 +59,22 @@
         <!--guoguo:circle_color="@color/banner_tag_blue_item_on_color"-->
         <!--guoguo:stroke_width="5"/>-->
 
-    <ImageView
-        android:id="@+id/image_png"
+    <com.guoguo.ui.anmi.MyView
+        xmlns:guoguo ="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/my_view"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@mipmap/image"
-        android:background="@color/White"/>
+        android:layout_height="wrap_content"
+        guoguo:text_color="@color/White"
+        guoguo:img_bkg="@drawable/logo"
+        guoguo:anim="true"
+        android:visibility="gone"/>
 
-    <com.guoguo.ui.anmi.AnimCustomView
-        android:id="@+id/animCustomView"
+    <TextView
+        android:id="@+id/tv_anim"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </com.guoguo.ui.anmi.AnimCustomView>
-
-
-    <ImageView
-        android:id="@+id/image_png_2"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@mipmap/image"
-        android:background="@color/White"/>
-
-    </com.guoguo.ui.anmi.ObservableScrollView>
+        android:layout_height="match_parent"
+        android:text="start"
+        android:textSize="100dp"
+        android:gravity="center"/>
 
 </LinearLayout>

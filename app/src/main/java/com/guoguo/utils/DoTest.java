@@ -10,6 +10,11 @@ import org.w3c.dom.UserDataHandler;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -21,7 +26,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class DoTest {
 
-    public   static   void stringTest()
+//    public static Collection<Integer> mlist = Collections.synchronizedCollection(new Vector<Integer>());
+
+    private static List<Integer> mlist = Collections.synchronizedList(new ArrayList<Integer>());
+
+    public static void stringTest()
     {
         String text = "" ;
 
@@ -66,5 +75,45 @@ public class DoTest {
 //
     }
 
+    private static void testSyncListAdd(Integer nValue) {
+        mlist.add(nValue);
+        Log.error("testadd" , String.valueOf(nValue));
+    }
 
+    private static void testSyncListVisit() {
+//        synchronized (mlist) {
+            for (Integer nValue : mlist) {
+                Log.error("testVisit", String.valueOf(nValue));
+//            }
+
+        }
+
+    }
+
+    private static void testSyncListRemove() {
+//        synchronized (mlist) {
+            mlist.clear();
+        Log.error("testRemove", "");
+//        }
+    }
+
+    public static void testSyncList() {
+        for (int n = 0; n < 1000; n++) {
+            testSyncListAdd(n);
+        }
+
+        new Thread() {
+            @Override
+            public void run() {
+                testSyncListVisit();
+            }
+        }.start();
+
+        new Thread() {
+            @Override
+            public void run() {
+                testSyncListRemove();
+            }
+        }.start();
+    }
 }

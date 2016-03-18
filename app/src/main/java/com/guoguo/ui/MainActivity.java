@@ -30,6 +30,7 @@ import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
 import com.guoguo.ui.view.customProgressView.ProgressActivity;
 import com.guoguo.ui.viewpager.MyViewPager;
+import com.guoguo.utils.DoTest;
 import com.guoguo.utils.UIutils;
 
 import java.util.ArrayList;
@@ -227,7 +228,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 //                    PopUpWindowManager.showWindow(PopUpWindowManager.POP_UP_WINDOW_WELCOME);
 //                    break;
                 case GRID_ITEM_MY_PROGRESS:
-                    startActivity(new Intent(MainActivity.this, ProgressActivity.class));
+//                    startActivity(new Intent(MainActivity.this, ProgressActivity.class));
+                    DoTest.testSyncList();
                     break;
                 default:
                     break;
