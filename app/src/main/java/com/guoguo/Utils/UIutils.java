@@ -8,11 +8,14 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Movie;
+import android.os.Environment;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,5 +97,23 @@ public class UIutils {
         DisplayMetrics metrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         return new int[] { metrics.widthPixels, metrics.heightPixels };
+    }
+
+    public static int getScreenWidth(Context context) {
+        WindowManager windowManager = (WindowManager)context.getSystemService("window");
+        DisplayMetrics metric = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metric);
+        return metric.widthPixels;
+    }
+
+    public static int getScreenHeight(Context context) {
+        WindowManager windowManager = (WindowManager)context.getSystemService("window");
+        DisplayMetrics metric = new DisplayMetrics();
+        windowManager.getDefaultDisplay().getMetrics(metric);
+        return metric.heightPixels;
+    }
+
+    public static boolean isSdcardExist() {
+        return Environment.getExternalStorageState().equals("mounted");
     }
 }
