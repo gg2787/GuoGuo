@@ -39,7 +39,7 @@ public class MyPushService {
     }
 
     public void initPushService() {
-        MiPushClient.checkManifest(mContext);
+//        MiPushClient.checkManifest(mContext);
 
         Log.error(TAG, "initPushService");
         if (shouldInit(mContext)) {

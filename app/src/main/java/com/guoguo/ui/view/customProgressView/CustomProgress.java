@@ -16,16 +16,16 @@ public class CustomProgress extends View{
     private float mfProgress = 0;
 
     public CustomProgress(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public CustomProgress(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initAttribute();
+        this(context, attrs, 0);
     }
 
     public CustomProgress(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAttribute();
     }
 
     private void initAttribute() {

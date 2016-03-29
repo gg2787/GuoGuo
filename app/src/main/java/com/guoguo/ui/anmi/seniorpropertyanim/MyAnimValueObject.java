@@ -2,6 +2,7 @@ package com.guoguo.ui.anmi.seniorpropertyanim;
 
 /**
  * Created by Administrator on 2016/3/17.
+ * 属性动画的高级用法
  */
 public class MyAnimValueObject {
     private int mNum = 0;

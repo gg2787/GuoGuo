@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Movie;
 import android.os.Environment;
@@ -16,6 +17,8 @@ import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.guoguo.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,5 +118,12 @@ public class UIutils {
 
     public static boolean isSdcardExist() {
         return Environment.getExternalStorageState().equals("mounted");
+    }
+
+    public static Bitmap loadBitmap(Context context, int id) {
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inSampleSize = 1;
+        opts.inScaled = false;
+        return BitmapFactory.decodeResource(context.getResources(), id, opts);
     }
 }

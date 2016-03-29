@@ -32,6 +32,7 @@ import com.guoguo.ui.view.customProgressView.ProgressActivity;
 import com.guoguo.ui.viewpager.MyViewPager;
 import com.guoguo.utils.DoTest;
 import com.guoguo.utils.UIutils;
+import com.guoguo.wallpaperAndLock.Wallpaper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -229,7 +230,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 //                    break;
                 case GRID_ITEM_MY_PROGRESS:
 //                    startActivity(new Intent(MainActivity.this, ProgressActivity.class));
-                    DoTest.testSyncList();
+                    Wallpaper wallpaper = new Wallpaper();
+                    wallpaper.changeWall(MainActivity.this);
                     break;
                 default:
                     break;
