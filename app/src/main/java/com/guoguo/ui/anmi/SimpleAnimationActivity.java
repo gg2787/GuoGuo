@@ -48,6 +48,7 @@ public class SimpleAnimationActivity extends Activity implements View.OnTouchLis
     private ImageView mImageView2 = null;
     private LinearLayout mPullDown = null;
     private TextView mTextView = null;
+    private AnimCircle mAnimCircle = null;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -64,7 +65,9 @@ public class SimpleAnimationActivity extends Activity implements View.OnTouchLis
     @Override
     protected void onResume() {
         super.onResume();
-        startMyAnimator();
+//        startMyAnimator();
+        mAnimCircle.setVisibility(View.VISIBLE);
+        mAnimCircle.startAnim();
     }
 
     private void initView() {
@@ -76,6 +79,7 @@ public class SimpleAnimationActivity extends Activity implements View.OnTouchLis
         mPullDown = (LinearLayout)findViewById(R.id.pull_layout);
         mPullDown.setOnTouchListener(this);
         mTextView = (TextView)findViewById(R.id.tv_anim);
+        mAnimCircle = (AnimCircle)findViewById(R.id.anim_circle);
     }
 
     /*
