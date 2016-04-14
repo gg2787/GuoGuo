@@ -5,14 +5,17 @@
     <color name="Gray">#6c6c6c</color>
     <color name="Orange">#e63900</color>
     <color name="LightGray">#f3f3f3</color>
+    <color name="transparent">#00000000</color>
 
-    <color name="banner_tag_item_text_color">#f6fdff</color>
-    <color name="banner_tag_blue_item_color">#40aefb</color>
-    <color name="banner_tag_blue_item_on_color">#4fb5fc</color>
-    <color name="banner_tag_red_item_color">#f67463</color>
-    <color name="banner_tag_red_item_on_color">#fb8172</color>
-    <color name="banner_tag_green_item_color">#9ccd48</color>
-    <color name="banner_tag_green_item_on_color">#a5d454</color>
-    <color name="banner_tag_orange_item_color">#ffa54b</color>
-    <color name="banner_tag_orange_item_on_color">#ffb24d</color>
+    <color name="banner_tag_item_text_color">#fff6fdff</color>
+    <color name="banner_tag_blue_item_color">#ff40aefb</color>
+    <color name="banner_tag_blue_item_on_color">#ff4fb5fc</color>
+    <color name="banner_tag_red_item_color">#fff67463</color>
+    <color name="banner_tag_red_item_on_color">#fffb8172</color>
+    <color name="banner_tag_green_item_color">#ff9ccd48</color>
+    <color name="banner_tag_green_item_on_color">#ffa5d454</color>
+    <color name="banner_tag_orange_item_color">#ffffa54b</color>
+    <color name="banner_tag_orange_item_on_color">#ffffb24d</color>
+
+    <color name="cover_black">#80262626</color>
 </resources>

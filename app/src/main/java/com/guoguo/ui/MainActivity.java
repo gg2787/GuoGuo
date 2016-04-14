@@ -3,9 +3,12 @@ package com.guoguo.ui;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.Menu;
@@ -19,6 +22,7 @@ import android.widget.LinearLayout;
 
 import com.guoguo.R;
 import com.guoguo.demos.dynamicProxy.ProxyTest;
+import com.guoguo.logic.network.NetworkConnectChangedReceiver;
 import com.guoguo.logic.log.Log;
 import com.guoguo.logic.prefs.AppPrefs;
 import com.guoguo.logic.service.AppService;
@@ -28,11 +32,9 @@ import com.guoguo.logic.watchUs.OpenWeiChat;
 import com.guoguo.ui.anmi.SimpleAnimationActivity;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
-import com.guoguo.ui.view.customProgressView.ProgressActivity;
 import com.guoguo.ui.viewpager.MyViewPager;
-import com.guoguo.utils.DoTest;
 import com.guoguo.utils.UIutils;
-import com.guoguo.wallpaperAndLock.Wallpaper;
+import com.guoguo.wallpaperAndLock.WallpaperActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +46,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private MyBinder mBinder = null;
     private GridView mGridView = null;
 
+    private  NetworkConnectChangedReceiver mWifi= new NetworkConnectChangedReceiver();
+
     private static final int GRID_ITEM_START_SERVICE = 0;
     private static final int GRID_ITEM_STOP_SERVICE = 1;
     private static final int GRID_ITEM_MY_LIST = 2;
@@ -52,7 +56,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private static final int GRID_ITEM_VIEW_PAGER = 5;
     private static final int GRID_ITEM_ANIM = 6;
     private static final int GRID_ITEM_POP_UP_WINDOW = 8;
-    private static final int GRID_ITEM_MY_PROGRESS = 7;
+    private static final int GRID_ITEM_WALL_PAPER = 7;
     private static final int GRID_ITEM_BANNER = 9;
 
     private static final int BANNER_MARGIN_DP = 5;
@@ -185,7 +189,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         lstItem.add(mapAnim);
 
         HashMap<String, Object> mapProgress = new HashMap<>();
-        mapProgress.put("ItemText", "自定义进度条");
+        mapProgress.put("ItemText", "壁纸设置");
         lstItem.add(mapProgress);
 
         MainGrideAdapter manageGrideAdapter = new MainGrideAdapter(lstItem, this);
@@ -228,10 +232,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
 //                case GRID_ITEM_POP_UP_WINDOW:
 //                    PopUpWindowManager.showWindow(PopUpWindowManager.POP_UP_WINDOW_WELCOME);
 //                    break;
-                case GRID_ITEM_MY_PROGRESS:
+                case GRID_ITEM_WALL_PAPER:
 //                    startActivity(new Intent(MainActivity.this, ProgressActivity.class));
-                    Wallpaper wallpaper = new Wallpaper();
-                    wallpaper.changeWall(MainActivity.this);
+//                    Wallpaper wallpaper = new Wallpaper();
+//                    wallpaper.changeWall(MainActivity.this);
+                    startActivity(new Intent(MainActivity.this, WallpaperActivity.class));
                     break;
                 default:
                     break;
@@ -291,5 +296,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
         img.setLayoutParams(para);
         return img;
     }
+
+
+    public void regist() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(mWifi, filter);
+        String strSSId = NetworkConnectChangedReceiver.getSsid(this);
+        ShowToast.showLongToast(this, strSSId);
+    }
+
 }
 

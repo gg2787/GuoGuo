@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.WallpaperInfo;
 import android.app.WallpaperManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -16,7 +17,9 @@ import android.media.MediaScannerConnection;
 import android.text.TextUtils;
 
 import com.guoguo.R;
+import com.guoguo.ui.MainActivity;
 import com.guoguo.ui.toast.ShowToast;
+import com.guoguo.ui.viewpager.MyViewPager;
 import com.guoguo.utils.FileUtils;
 import com.guoguo.utils.UIutils;
 
@@ -39,24 +42,35 @@ public class Wallpaper {
 
     private static final int MAX_FACES = 3;
 
-    public void changeWall(final Activity activity) {
+    public static void changeWall(final Bitmap bitmapSrc, final Activity activity) {
+        final Bitmap bitmap;
+        if (bitmapSrc == null) {
+            bitmap = UIutils.loadBitmap(activity.getApplicationContext(), R.drawable.wall_face);
+        } else {
+            bitmap = bitmapSrc;
+        }
 
-        final Bitmap  bitmap = UIutils.loadBitmap(activity.getApplicationContext(), R.drawable.wall_face);
-
-//        faceDetect(bitmap);
-
-        final Bitmap bitmap2 = imageScaleAndCrop(activity, bitmap);
+        final Bitmap bitmap2 = imageScaleAndCrop(activity, bitmap, getMinWallpaperAttr(activity)[0], getMinWallpaperAttr(activity)[1]);
+        if (bitmap != bitmapSrc) {
+            bitmap.recycle();
+        }
 
         new Thread(new Runnable() {
             public void run() {
 
                 setWallpaper(activity.getApplicationContext(), bitmap2);
                 bitmap2.recycle();
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ShowToast.showLongToast(activity, "壁纸设置成功");
+                    }
+                });
             }
         }).start();
     }
 
-    private void setWallpaper (Context context, Bitmap bitmap) {
+    private static void setWallpaper (Context context, Bitmap bitmap) {
 
         WallpaperManager wallpaperManager = WallpaperManager.getInstance(context);
 
@@ -68,17 +82,19 @@ public class Wallpaper {
         }
     }
 
-    public Bitmap imageScaleAndCrop(Activity activity, Bitmap bitmapSrc) {
+    public static Bitmap imageScaleAndCrop(Activity activity, Bitmap bitmapSrc, int nScreenWidth, int nScreenHeight) {
         if (null == activity || null == bitmapSrc) {
             return null;
         }
 
-        int[] nScreenSize = UIutils.getScreenSize(activity);
-        if (nScreenSize.length < 2) {
-            return null;
+        if (nScreenWidth == 0 || nScreenHeight == 0) {
+            int[] nScreenSize = UIutils.getScreenSize(activity);
+            if (nScreenSize.length < 2) {
+                return null;
+            }
+            nScreenWidth = nScreenSize[0];
+            nScreenHeight = nScreenSize[1];
         }
-        int nScreenWidth = nScreenSize[0];
-        int nScreenHeight = nScreenSize[1];
 
 //        int[] minSize = getMinWallpaperAttr(activity);
 //        if (null != minSize) {
@@ -94,10 +110,10 @@ public class Wallpaper {
         }
 
         int nCenterX = nSrcWidth / 2; //可能为0
-        PointF face = faceDetect(bitmapSrc);
-        if (face != null) {
-            nCenterX = (int)face.x;
-        }
+//        PointF face = faceDetect(bitmapSrc);
+//        if (face != null) {
+//            nCenterX = (int)face.x;
+//        }
 
         //计算出缩放,先裁剪 后缩放
         float fScale = Math.max((float) nScreenWidth / (float) nSrcWidth, (float) nScreenHeight / (float) nSrcHeight);
@@ -110,14 +126,14 @@ public class Wallpaper {
         int nSrcStartY = (int)Math.floor((nSrcHeight - nSrcY) / 2);
 
         Bitmap bitmapDst = bitmapScaleAndCrop(bitmapSrc, nSrcX, nSrcY,
-                nSrcStartX, nSrcStartY, nScreenWidth, nScreenHeight, Bitmap.Config.ARGB_4444);
+                nSrcStartX, nSrcStartY, nScreenWidth, nScreenHeight, bitmapSrc.getConfig());
 
 //        saveWallpaper(activity.getApplicationContext(), bitmapDstAdjust, "wall1", "GuoguoWall", null);
 
         return bitmapDst;
     }
 
-    private int getStartX(int nCenterX, int nSrcX, int nDstX) {
+    private static int getStartX(int nCenterX, int nSrcX, int nDstX) {
         int nStart = nCenterX - nDstX / 2 - 1;
         int nEnd = nCenterX + nDstX / 2 + 1;
         if (nEnd > nSrcX) {

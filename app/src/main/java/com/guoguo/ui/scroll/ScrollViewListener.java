@@ -1,6 +1,4 @@
-package com.guoguo.ui.anmi.scroll;
-
-import com.guoguo.ui.anmi.scroll.ObservableScrollView;
+package com.guoguo.ui.scroll;
 
 /**
  * Created by Administrator on 2016/3/15.
