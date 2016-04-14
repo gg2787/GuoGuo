@@ -3,12 +3,9 @@ package com.guoguo.ui;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.ConnectivityManager;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.Menu;
@@ -32,6 +29,7 @@ import com.guoguo.logic.watchUs.OpenWeiChat;
 import com.guoguo.ui.anmi.SimpleAnimationActivity;
 import com.guoguo.ui.toast.ShowToast;
 import com.guoguo.ui.view.customListView.CustomListActivity;
+import com.guoguo.ui.view.viewDemo.FullScreenViewActivity;
 import com.guoguo.ui.viewpager.MyViewPager;
 import com.guoguo.utils.UIutils;
 import com.guoguo.wallpaperAndLock.WallpaperActivity;
@@ -48,6 +46,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     private  NetworkConnectChangedReceiver mWifi= new NetworkConnectChangedReceiver();
 
+    private static final int GRID_ITEM_POP_UP_WINDOW = 108;
+    private static final int GRID_ITEM_BANNER = 109;
+
     private static final int GRID_ITEM_START_SERVICE = 0;
     private static final int GRID_ITEM_STOP_SERVICE = 1;
     private static final int GRID_ITEM_MY_LIST = 2;
@@ -55,9 +56,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private static final int GRID_ITEM_PROXY_TEST = 4;
     private static final int GRID_ITEM_VIEW_PAGER = 5;
     private static final int GRID_ITEM_ANIM = 6;
-    private static final int GRID_ITEM_POP_UP_WINDOW = 8;
     private static final int GRID_ITEM_WALL_PAPER = 7;
-    private static final int GRID_ITEM_BANNER = 9;
+    private static final int GRID_ITEM_WIFI_INFO = 8;
+    private static final int GRID_ITEM_FULL_VIEW_DEMO = 9;
 
     private static final int BANNER_MARGIN_DP = 5;
     private static final int BANNER_HEIGHT_DP = 160;
@@ -188,9 +189,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
         mapAnim.put("ItemText", "tweened动画");
         lstItem.add(mapAnim);
 
-        HashMap<String, Object> mapProgress = new HashMap<>();
-        mapProgress.put("ItemText", "壁纸设置");
-        lstItem.add(mapProgress);
+        HashMap<String, Object> mapWallpaper = new HashMap<>();
+        mapWallpaper.put("ItemText", "壁纸设置");
+        lstItem.add(mapWallpaper);
+
+        HashMap<String, Object> mapWifiInfo = new HashMap<>();
+        mapWifiInfo.put("ItemText", "wifi信息");
+        lstItem.add(mapWifiInfo);
+
+        HashMap<String, Object> mapFullViewDemo = new HashMap<>();
+        mapFullViewDemo.put("ItemText", "全屏viewDemo");
+        lstItem.add(mapFullViewDemo);
 
         MainGrideAdapter manageGrideAdapter = new MainGrideAdapter(lstItem, this);
         mGridView.setAdapter(manageGrideAdapter);
@@ -223,9 +232,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     startActivity(new Intent(MainActivity.this, MyViewPager.class));
                     //viewpager
                     break;
-                case GRID_ITEM_BANNER:
-                    //使用fragment
-                    break;
                 case GRID_ITEM_ANIM:
                     startActivity(new Intent(MainActivity.this, SimpleAnimationActivity.class));
                     break;
@@ -233,10 +239,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
 //                    PopUpWindowManager.showWindow(PopUpWindowManager.POP_UP_WINDOW_WELCOME);
 //                    break;
                 case GRID_ITEM_WALL_PAPER:
-//                    startActivity(new Intent(MainActivity.this, ProgressActivity.class));
-//                    Wallpaper wallpaper = new Wallpaper();
-//                    wallpaper.changeWall(MainActivity.this);
                     startActivity(new Intent(MainActivity.this, WallpaperActivity.class));
+                    break;
+                case GRID_ITEM_WIFI_INFO:
+                    showWifiInfo();
+                    break;
+                case GRID_ITEM_FULL_VIEW_DEMO:
+                    startActivity(new Intent(MainActivity.this, FullScreenViewActivity.class));
                     break;
                 default:
                     break;
@@ -298,12 +307,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
 
 
-    public void regist() {
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
-        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
-        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(mWifi, filter);
+    public void showWifiInfo() {
+//        IntentFilter filter = new IntentFilter();
+//        filter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+//        filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+//        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+//        registerReceiver(mWifi, filter);
         String strSSId = NetworkConnectChangedReceiver.getSsid(this);
         ShowToast.showLongToast(this, strSSId);
     }

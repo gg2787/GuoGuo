@@ -36,10 +36,12 @@ public class AnimCircle extends View {
     private float mProcress = 0f;
     private boolean mShow = true;
 
+    public AnimCircle(Context context) {
+        this(context, null);
+    }
+
     public AnimCircle(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        mContext = context;
-        initView(context);
+        this(context, attrs, 0);
     }
 
     public AnimCircle(Context context, AttributeSet attrs, int defStyleAttr) {

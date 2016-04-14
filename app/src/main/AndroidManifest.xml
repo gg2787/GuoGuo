@@ -77,6 +77,8 @@
         <activity
             android:name=".wallpaperAndLock.WallpaperActivity"/>
 
+        <activity
+            android:name=".ui.view.viewDemo.FullScreenViewActivity"/>
 
 
         <!--对话框风格的activity-->
