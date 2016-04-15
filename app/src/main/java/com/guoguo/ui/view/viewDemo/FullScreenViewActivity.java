@@ -3,6 +3,8 @@ package com.guoguo.ui.view.viewDemo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.guoguo.R;
 
@@ -15,13 +17,12 @@ public class FullScreenViewActivity extends Activity{
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.animation_test);
+        initView();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        initView();
     }
 
     @Override
@@ -30,6 +31,10 @@ public class FullScreenViewActivity extends Activity{
     }
 
     private void initView() {
+        LinearLayout.LayoutParams params;
+        params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         mScreenView = new FullScreenView(this);
+        mScreenView.setLayoutParams(params);
+        setContentView(mScreenView, params);
     }
 }

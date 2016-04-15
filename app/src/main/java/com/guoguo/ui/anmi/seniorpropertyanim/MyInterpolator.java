@@ -4,6 +4,7 @@ import android.animation.TimeInterpolator;
 
 /**
  * Created by Administrator on 2016/3/17.
+ * 自定义加速器（android默认支持 匀速、回弹等）
  */
 public class MyInterpolator implements TimeInterpolator{
     @Override
