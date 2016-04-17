@@ -62,7 +62,7 @@ public class WallpaperActivity extends Activity{
     }
 
     private void loadBitmap(int width, int height) {
-        final Bitmap bitmap = UIutils.loadBitmap(getApplicationContext(), R.drawable.shuping2);
+        final Bitmap bitmap = UIutils.loadBitmap(getApplicationContext(), R.drawable.wallbig1);
         mBitmap = Wallpaper.imageScaleAndCrop(WallpaperActivity.this, bitmap, width, height);
         if (mBitmap != bitmap) {
             bitmap.recycle();
