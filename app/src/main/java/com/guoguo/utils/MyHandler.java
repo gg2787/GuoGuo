@@ -1,25 +1,27 @@
 package com.guoguo.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 
 /**
  * Created by Administrator on 2016/3/23.
  */
 public class MyHandler {
-    private static final int TIP_DELAY_TIME = 300;
+    private static final int DELAY_TIME = 300;
 
 
     /*
     延迟执行
      */
-    public void delayHandler() {
-        new Handler().postDelayed(new Runnable() {
+    public void delayHandler(Context context) {
+        //不传入looper,非UI线程会崩溃
+        new Handler(context.getMainLooper()).postDelayed(new Runnable() {
             public void run() {
                 //execute the task
                 //do something
             }
-        }, TIP_DELAY_TIME);
+        }, DELAY_TIME);
 
     }
 
