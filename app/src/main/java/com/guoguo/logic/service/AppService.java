@@ -67,7 +67,7 @@ public class AppService extends Service{
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.error(TAG, "onStartCommand");
+        Log.error(TAG, "onStartCommand" + "_flags:" + String.valueOf(flags) + "_startId:" + String.valueOf(startId));
         return super.onStartCommand(intent, flags, startId);
     }
 

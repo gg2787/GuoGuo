@@ -28,6 +28,7 @@ public class GuoGuoApplication extends Application{
 
     @Override
     public void onCreate() {
+        com.guoguo.logic.log.Log.error(TAG, "onCreate");
         super.onCreate();
         mContext = this;
         mInstance = this;

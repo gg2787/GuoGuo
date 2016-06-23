@@ -28,6 +28,19 @@
 <!--壁纸-->
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+
+
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -141,7 +154,6 @@
         <!--android:exported为false表示只可被当前Application或者拥有同样user ID的Application的组件调用-->
         <service android:name="com.guoguo.logic.service.AppService"
             android:exported="true">
-            <!--android:process=":appservice"-->
             <intent-filter>
                 <action android:name="com.guoguo.logic_action_AppService"/>
             </intent-filter>
@@ -156,6 +168,26 @@
             <!--</intent-filter>-->
         <!--</service>-->
         <!--&lt;!&ndash;辅助功能&ndash;&gt;-->
+
+        <!--for eguan-->
+        <!--<receiver android:name="com.eguan.drivermonitor.receiver.SystemStartReceiver" >-->
+            <!--<intent-filter android:priority="1000" >-->
+                <!--<action android:name="android.intent.action.BOOT_COMPLETED" />-->
+                <!--<action android:name="android.intent.action.USER_PRESENT" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
+        <!--<service-->
+            <!--android:name="com.eguan.drivermonitor.service.MonitorService"-->
+            <!--android:enabled="true"-->
+            <!--android:process=":monitorService" >-->
+        <!--</service>-->
+        <!--<meta-data-->
+            <!--android:name="getLocationInfo"-->
+            <!--android:value="Yes" />-->
+        <!--<meta-data-->
+            <!--android:name="formalInterface"-->
+            <!--android:value="Yes"/>-->
+        <!--end of for eguan-->
 
     </application>
 

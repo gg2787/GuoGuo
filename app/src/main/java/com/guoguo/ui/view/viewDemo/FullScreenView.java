@@ -172,8 +172,6 @@ public class FullScreenView extends ImageView {
         int translationY = (int) ViewHelper.getTranslationY(this) + deltaY;
         ViewHelper.setTranslationX(this, translationX);
         ViewHelper.setTranslationY(this, translationY);
-
-        ViewGroup
     }
 
     /*
@@ -209,5 +207,4 @@ public class FullScreenView extends ImageView {
 
     /////////////end of 滑动测试////////////////////////////////////////////////////
 
-    public boolean disp
 }

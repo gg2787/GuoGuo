@@ -1,11 +1,17 @@
 package com.guoguo.ui;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.Menu;
@@ -36,6 +42,9 @@ import com.guoguo.wallpaperAndLock.WallpaperActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import com.eguan.drivermonitor.manager.ServiceManager;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -64,6 +73,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private static final int BANNER_HEIGHT_DP = 160;
     private static final int BANNER_IMG_CNT = 4;
 
+    private static final int MAX_NUM = 100;
+
+    public static final String CM_URL = "http://guoguoACTIVE.com";
+
     LinearLayout mBannerView;
 
     @Override
@@ -79,6 +92,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         initView();
 
         setStatus(getIntent());
+
+        ServiceManager.getInstance().startProgress(this, "", "");
     }
 
     private void setStatus(Intent intent) {
@@ -316,6 +331,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         String strSSId = NetworkConnectChangedReceiver.getSsid(this);
         ShowToast.showLongToast(this, strSSId);
     }
+
 
 }
 
